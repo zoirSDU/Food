@@ -20,7 +20,7 @@
                 {{ csrf_field() }}
                 <div class="form-group has-feedback">
                     <div class="input-group">
-                        <input type="email" class="form-control" placeholder="{{ trans('global.login_email') }}" name="email">
+                        <input type="tel" class="form-control" placeholder="{{ trans('global.login_email') }}" name="email">
                     </div>
                 </div>
                 <div class="form-group has-feedback">

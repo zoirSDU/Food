@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use http\Env\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -64,12 +65,21 @@ class RegisterController extends Controller
      */
     protected function create(\Illuminate\Http\Request $data)
     {
+//        $filename = $data['docs']->store($data['docs']);
+        $fileName = time().'.'.request()->docs;
+//        request()->image->move(public_path('images'), $fileName);
+
         User::create([
             'name' => $data['name'],
             'phone' => $data['phone'],
             'address' => $data['address'],
             'card_number' => $data['card_number'],
             'password' => Hash::make($data['password']),
+            'filename' => $fileName
+        ]);
+        $user = (User::where('phone',$data['phone'])->get())->toArray();
+        DB::table('role_user')->insert([
+            ['user_id'=>$user[0]['id'], 'role_id'=>3]
         ]);
         return redirect('/login');
     }
