@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use http\Env\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -61,12 +62,20 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(\Illuminate\Http\Request $data)
     {
-        return User::create([
+        User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'card_number' => $data['card_number'],
             'password' => Hash::make($data['password']),
         ]);
+        return redirect('/login');
+    }
+
+    protected function register()
+    {
+        return view('auth.register');
     }
 }
