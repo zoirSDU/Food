@@ -68,18 +68,21 @@ class RegisterController extends Controller
 //        $filename = $data['docs']->store($data['docs']);
         $fileName = time().'.'.request()->docs;
 //        request()->image->move(public_path('images'), $fileName);
-
-        User::create([
+//        dd($data['email']);
+        $user = User::create([
             'name' => $data['name'],
             'phone' => $data['phone'],
+            'email' => $data['email'],
             'address' => $data['address'],
             'card_number' => $data['card_number'],
             'password' => Hash::make($data['password']),
             'filename' => $fileName
         ]);
-        $user = (User::where('phone',$data['phone'])->get())->toArray();
+//        dd($u['id']);
+//        $user = (User::where('email',$data['email'])->get())->toArray();
+//        dd($user);
         DB::table('role_user')->insert([
-            ['user_id'=>$user[0]['id'], 'role_id'=>3]
+            ['user_id'=>$user['id'], 'role_id'=>3]
         ]);
         return redirect('/login');
     }

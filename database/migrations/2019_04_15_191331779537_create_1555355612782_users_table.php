@@ -12,6 +12,7 @@ class Create1555355612782UsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('phone');
+            $table->string('email');
             $table->string('address');
             $table->integer('longitude');
             $table->integer('latitude');
