@@ -46,6 +46,10 @@
                 <a class="" href="{{ route('password.request') }}">
                     {{ trans('global.forgot_password') }}
                 </a>
+                |
+                <a class="" href="{{ route('register.page') }}">
+                    {{ trans('Register') }}
+                </a>
             </p>
             <p class="mb-0">
 
