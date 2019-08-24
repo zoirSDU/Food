@@ -84,6 +84,18 @@
                         </a>
                     </li>
                 @endcan
+                @can('menu_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.menu.index") }}" class="nav-link {{ request()->is('admin/menu') || request()->is('admin/menu/*') ? 'active' : '' }}">
+                            <i class="fas fa-cogs">
+
+                            </i>
+                            <p>
+                                <span>{{ trans('global.menu.title') }}</span>
+                            </p>
+                        </a>
+                    </li>
+                @endcan
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
