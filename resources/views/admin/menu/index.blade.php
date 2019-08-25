@@ -3,7 +3,7 @@
 @can('menu_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.products.create") }}">
+            <a class="btn btn-success" href="{{ route("admin.menu.create") }}">
                 {{ trans('global.add') }} {{ trans('global.menu.title_singular') }}
             </a>
         </div>
@@ -76,17 +76,17 @@
                             </td>
                             <td>
                                 @can('menu_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.products.show', $menu->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.menu.show', $menu->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
                                 @can('menu_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.products.edit', $menu->id) }}">
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.menu.edit', $menu->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
                                 @can('menu_delete')
-                                    <form action="{{ route('admin.products.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                    <form action="{{ route('admin.menu.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -133,7 +133,7 @@
     }
   }
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('product_delete')
+@can('menu_delete')
   dtButtons.push(deleteButton)
 @endcan
 

@@ -10,8 +10,6 @@ class create1555355681975menustable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('product_id');
-            $table->unsignedInteger('product_type_id');
             $table->string('status');
             $table->string('cooking_date');
             $table->string('delivery_itself');
